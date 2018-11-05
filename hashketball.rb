@@ -131,6 +131,7 @@ def shoe_size(player)
   all_players[player][:shoe]
 end
 
+#probably a shorter way to do this one
 def team_colors(team_name)
   if game_hash[:home][:team_name].include?(team_name)
     game_hash[:home][:colors]
@@ -139,6 +140,7 @@ def team_colors(team_name)
   end
 end
 
+#made an array of team names
 def team_names
   [game_hash[:home][:team_name], game_hash[:away][:team_name]]
 end
@@ -155,8 +157,50 @@ def player_stats(player)
   all_players[player]
 end
 
+#two step process, first get the biggest shoe size, then used .find to get the player
 def big_shoe_rebounds
   biggest_shoe = all_players.collect { |player, player_data| player_data[:shoe]}.max
   biggest_shoe_person = all_players.find { |player, player_data| player_data[:shoe] == biggest_shoe }
   biggest_shoe_person[1][:rebounds]
+end
+
+#bonus section
+
+#this one is almost the same as the shoe/rebounds one
+def most_points_scored
+  most_points = all_players.collect { |player, player_data| player_data[:points]}.max
+  most_points_person = all_players.find { |player, player_data| player_data[:points] == most_points }
+  most_points_person[0]
+end
+
+# .sum wasn't working in ruby v 2.3
+def winning_team
+  home_points = game_hash[:home][:players].collect { |player, player_data| player_data[:points]}
+  home_sum = home_points.reduce(:+)
+  away_points = game_hash[:away][:players].collect { |player, player_data| player_data[:points]}
+  away_sum = away_points.reduce(:+)
+  if home_sum > away_sum
+    game_hash[:home][:team_name]
+  elsif away_sum > home_sum
+    game_hash[:away][:team_name]
+  else
+    "tie score"
+  end
+end
+
+def player_with_longest_name
+  all_names = all_players.keys
+  longest_name = all_names.collect { |name| name.length}.max
+  longest_name_player = all_names.find { |name| name.length == longest_name}
+  longest_name_player
+end
+
+def long_name_steals_a_ton?
+  all_players.values
+  steal_array = all_players.collect {|s, steals| steals[:steals]}.max
+  if steal_array == all_players[player_with_longest_name][:steals]
+    true
+  else
+    false
+  end
 end
