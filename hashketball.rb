@@ -195,12 +195,9 @@ def player_with_longest_name
   longest_name_player
 end
 
+#super bonus
 def long_name_steals_a_ton?
   all_players.values
   steal_array = all_players.collect {|s, steals| steals[:steals]}.max
-  if steal_array == all_players[player_with_longest_name][:steals]
-    true
-  else
-    false
-  end
+  steal_array == all_players[player_with_longest_name][:steals]
 end
