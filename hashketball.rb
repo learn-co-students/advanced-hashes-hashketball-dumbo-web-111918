@@ -35,8 +35,28 @@ def game_hash
                                         :steals => 3,
                                         :blocks => 1,
                                         :slam_dunks => 15
+                        },
+                        "Mason Plumlee" => {
+                                        :number => 1,
+                                        :shoe => 19,
+                                        :points => 26,
+                                        :rebounds => 12,
+                                        :assists => 6,
+                                        :steals => 3,
+                                        :blocks => 8,
+                                        :slam_dunks => 5
+                        },,
+                        "Jason Terry" => {
+                                         :number => 31,
+                                         :shoe => 15,
+                                         :points => 19,
+                                         :rebounds => 2,
+                                         :assists => 2,
+                                         :steals => 4,
+                                         :blocks => 11,
+                                         :slam_dunks => 1
                         }
-            }
+                  }
             },
             :away =>{
                     :team_name => "Charlotte Hornets",
@@ -88,7 +108,7 @@ def num_points_scored (name)
         binding.pry
         if  players[player_name] == name
           binding.pry
-          result << game_hash[team_origin][:players][name][points]
+          result << players][name][:points]
         end
       end
       result
