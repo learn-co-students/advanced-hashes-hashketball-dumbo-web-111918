@@ -1,7 +1,6 @@
 # Write your code here!
 
-require 'pry'
-
+require "pry"
 def game_hash
   {
     :home => {
@@ -130,7 +129,16 @@ end
 #  end
 #end
 
+#extracting just the players from the hash
+def player_hash
+  home = game_hash[:home][:players]
+  away = game_hash[:away][:players]
+ player_hash = home.merge(away)
+end
 
+def num_points_scored(player)
+  player_hash[player][:points]
+end
 
 
 
