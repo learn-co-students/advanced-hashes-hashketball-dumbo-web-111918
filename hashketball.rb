@@ -40,7 +40,7 @@ def game_hash
                     :team_name => "Charlotte Hornets",
                     :colors => ["Turquoise", "Purple"],
                     :players =>{
-                      "JeffAdrien"=>{
+                      "JeffAdrien" => {
                                         :number => 4,
                                         :shoe => 18,
                                         :points => 10,
@@ -77,10 +77,56 @@ def game_hash
 return game_hash
 end
 
+  
+def num_points_scored (name)
+  
+ 
+end
+    
+    
+    
+      
+
+def shoe_size(player_name)
+   
+end
 
 
+def team_colors(team_name)
+  result = []
+  game_hash.each do |team_origin, team_attribute|
+    if team_attribute[:team_name] == team_name
+      result << game_hash[team_origin][:colors]
+    end
+  end
+  result.flatten
+end
 
+def team_names
+    array = []
+    game_hash.each do |team_origin, team|
+        array << team[:team_name]
+    end
+    array
+end
 
+def player_numbers(team_name)
+   
+end
 
+def player_stats(name)
+  result = []
+  game_hash.each do |team_origin, players|
+    team_origin.each do |players, name|
+      players.each do |name|
+        if players.has_key?(name)
+          return players[name]
+        end
+      end
+    end
+  end
+end
 
-
+def big_shoe_rebounds
+  
+end
