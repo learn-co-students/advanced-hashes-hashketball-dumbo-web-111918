@@ -1,10 +1,12 @@
+require "pry"
+
 def game_hash
  game_hash = {
             :home => {
                     :team_name => "Brooklyn Nets",
                     :colors =>["Black", "White"],
                     :players =>{
-                            "Alan Anderson" => {
+                            "Alan Anderson" => [
                                           :number => 0,
                                           :shoe => 16,
                                           :points => 22,
@@ -13,8 +15,8 @@ def game_hash
                                           :steals => 3,
                                           :blocks => 1,
                                           :slam_dunks => 1
-                             }, 
-                               "Reggie Evans" => {
+                             ], 
+                               "Reggie Evans" => [
                                          :number => 30,
                                          :shoe => 14,
                                          :points => 12,
@@ -23,8 +25,8 @@ def game_hash
                                          :steals => 12,
                                          :blocks => 12,
                                          :slam_dunks => 7
-                      },
-                        "Brook Lopes" =>{
+                      ],
+                        "Brook Lopes" =>[
                                         :number => 11,
                                         :shoe => 17,
                                         :points => 17,
@@ -33,14 +35,14 @@ def game_hash
                                         :steals => 3,
                                         :blocks => 1,
                                         :slam_dunks => 15
-                               }
+                               ]
             }
             },
             :away =>{
                     :team_name => "Charlotte Hornets",
                     :colors => ["Turquoise", "Purple"],
                     :players =>{
-                      "JeffAdrien" => {
+                      "JeffAdrien" => [
                                         :number => 4,
                                         :shoe => 18,
                                         :points => 10,
@@ -49,8 +51,8 @@ def game_hash
                                         :steals => 2,
                                         :blocks => 7,
                                         :slam_dunks => 2
-                         },
-                       "Bismark Biyombo" => {:number => 0,
+                         ],
+                       "Bismark Biyombo" => [:number => 0,
                                        :shoe => 16,
                                         :points => 12,
                                         :rebounds => 4,
@@ -59,8 +61,8 @@ def game_hash
                                         :blocks => 15,
                                         :slam_dunks => 10
                         
-                         },
-                      "DeSagna Diop" => {:number => 2,
+                         ],
+                      "DeSagna Diop" => [:number => 2,
                                         :shoe => 14,
                                         :points => 24,
                                         :rebounds => 12,
@@ -69,7 +71,7 @@ def game_hash
                                         :blocks => 5,
                                         :slam_dunks => 5
                         
-                      }
+                      ]
                     }
             }
           }
@@ -80,10 +82,16 @@ end
   
 def num_points_scored (name)
   
- 
+    game_hash.each do |team_origin, team_attribute|
+      team_attribute.each do |players|
+        if  players[player_name] == name
+          result << game_hash[team_origin][:players][name][points]
+        end
+      end
+      result
 end
-    
-    
+  
+  
     
       
 
@@ -93,13 +101,13 @@ end
 
 
 def team_colors(team_name)
-  result = []
-  game_hash.each do |team_origin, team_attribute|
-    if team_attribute[:team_name] == team_name
-      result << game_hash[team_origin][:colors]
+ result = []
+    game_hash.each do |team_origin, team_attribute|
+        if team_attribute[:team_name] == team_name
+            result << game_hash[team_origin][:colors]
+        end
     end
-  end
-  result.flatten
+    result.flatten
 end
 
 def team_names
