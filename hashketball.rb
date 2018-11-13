@@ -1,4 +1,4 @@
-rubyrequire "pry"
+require 'pry'
 
 def game_hash
  game_hash = {
@@ -118,28 +118,17 @@ return game_hash
 end
 
   
-#def num_points_scored (name)
-
-#end
-
 def shoe_size(name)
   result= []
   game_hash.each do |team_origin, team_attribute|
       binding.pry
-    team_attribute.each do |players, player_info|
-      binding.pry 
-      player_info.each do |player_name, player_attributes| 
-          binding.pry
-        if player_name[name] == name 
-          binding.pry 
-          result << player_attributes[:shoe] 
-          
-        end 
-      end 
-    end 
+   if  team_attribute[:players] == name
+     result << team_attribute[:players][name][:shoe]
+      binding.pry
+   end        
   end 
-  result
+   result
 end
+
+
  
-
-
