@@ -5,19 +5,11 @@ end
 
 def num_points_scored(player)
   game_hash.each do |team, v|
-    v.each do |k, v|
-      if k == :players 
-        v.each do |k, v|
-          if k == player 
-            v.each do |k, v|
-              if k == :points
-                return v 
-              end
-            end
-          end
-        end
-      end 
-    end 
+    v[:players].each do |k, v|
+      if k == player 
+         return v[:points]
+      end
+    end
   end
 end 
 def shoe_size(player)
@@ -39,7 +31,6 @@ def shoe_size(player)
 end 
                 
 def team_colors(team)
-  a = "3"
   game_hash.each do |k, v|
     a = k 
     v.each do |k, v|
@@ -62,8 +53,8 @@ def team_names
   a
 end
 
+
 def player_numbers(team)
-  a = "3"
   game_hash.each do |k, v|
     a = k 
     v.each do |k, v|
