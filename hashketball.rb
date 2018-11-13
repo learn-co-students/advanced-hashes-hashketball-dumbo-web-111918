@@ -120,7 +120,7 @@ end
 def num_points_scored(name)
    game_hash.each do |location, team_data|
       team_data[:players].each do |player_name, data|
-         if player_name == name #check the name to match
+         if player_name == name
             return data[:points]
          end
       end
@@ -187,4 +187,4 @@ def big_shoe_rebounds
       end
    end
    rebound
-end}
+end
