@@ -216,3 +216,19 @@ def big_shoe_rebounds
 end
 end
 end
+
+def most_points_scored
+
+  game_hash.each do |team, value|
+
+
+     value[:players].each do |player, attribute|
+     #binding.pry
+      if attribute[:points] == 33
+
+      return player
+
+end
+end
+end
+end
