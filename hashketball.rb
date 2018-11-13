@@ -143,31 +143,3 @@ end
  
 
 
-def team_colors(team_name)
- result = []
-    game_hash.each do |team_origin, team_attribute|
-        if team_attribute[:team_name] == team_name
-            result << game_hash[team_origin][:colors]
-        end
-    end
-    result.flatten
-end
-
-def team_names
-    array = []
-    game_hash.each do |team_origin, team|
-        array << team[:team_name]
-    end
-    array
-end
-
- def player_numbers(team_name)
- end 
-
-def player_stats(name)
-
-end
-
-def big_shoe_rebounds
-  
-end
