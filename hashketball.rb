@@ -212,7 +212,7 @@ end
           end
     end
 
-    biggest_shoe = -1
+    biggest_shoe = 0
     shoe_sizes.each do |size|
       if size > biggest_shoe
         biggest_shoe = size
