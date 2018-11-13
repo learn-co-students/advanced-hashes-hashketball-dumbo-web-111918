@@ -13,7 +13,7 @@ def game_hash
           :assists => 12,
           :steals => 3,
           :blocks => 1,
-          :slam_dunks => 1,
+          :slam_dunks => 1
         },
         "Reggie Evans" => {
           :number => 30,
@@ -23,41 +23,41 @@ def game_hash
           :assists => 12,
           :steals => 12,
           :blocks => 12,
-          :slam_dunks => 7,
-
+          :slam_dunks => 7
+},
           "Brook Lopez" => {
-                  :number => 11,
-                  :shoe => 17,
-                  :points => 17,
-                  :rebounds => 19,
-                  :assists => 10,
-                  :steals => 3,
-                  :blocks => 1,
-                  :slam_dunks => 15,
+          :number => 11,
+          :shoe => 17,
+          :points => 17,
+          :rebounds => 19,
+          :assists => 10,
+          :steals => 3,
+          :blocks => 1,
+          :slam_dunks => 15
                 },
-                "Mason Plumlee" => {
-                  :number => 1,
-                  :shoe => 19,
-                  :points => 26,
-                  :rebounds => 12,
-                  :assists => 6,
-                  :steals => 3,
-                  :blocks => 8,
-                  :slam_dunks => 5,
+        "Mason Plumlee" => {
+          :number => 1,
+          :shoe => 19,
+          :points => 26,
+          :rebounds => 12,
+          :assists => 6,
+          :steals => 3,
+          :blocks => 8,
+          :slam_dunks => 5
                 },
-                "Jason Terry" => {
-                  :number => 31,
-                  :shoe => 15,
-                  :points => 19,
-                  :rebounds => 2,
-                  :assists => 2,
-                  :steals => 4,
-                  :blocks => 11,
-                  :slam_dunks => 1,
+        "Jason Terry" => {
+          :number => 31,
+          :shoe => 15,
+          :points => 19,
+          :rebounds => 2,
+          :assists => 2,
+          :steals => 4,
+          :blocks => 11,
+          :slam_dunks => 1
                 }
               }
-            }
             },
+
             :away => {
               :team_name => "Charlotte Hornets",
               :colors => ['Turquoise', 'Purple'],
@@ -70,7 +70,7 @@ def game_hash
                   :assists => 1,
                   :steals => 2,
                   :blocks => 7,
-                  :slam_dunks => 2,
+                  :slam_dunks => 2
                 },
                 "Bismak Biyombo" => {
                   :number => 0,
@@ -80,7 +80,7 @@ def game_hash
                   :assists => 7,
                   :steals => 7,
                   :blocks => 15,
-                  :slam_dunks => 10,
+                  :slam_dunks => 10
                 },
                 "DeSagna Diop" => {
                   :number => 2,
@@ -90,7 +90,7 @@ def game_hash
                   :assists => 12,
                   :steals => 4,
                   :blocks => 5,
-                  :slam_dunks => 5,
+                  :slam_dunks => 5
                 },
                 "Ben Gordon" => {
                   :number => 8,
@@ -100,7 +100,7 @@ def game_hash
                   :assists => 2,
                   :steals => 1,
                   :blocks => 1,
-                  :slam_dunks => 0,
+                  :slam_dunks => 0
                 },
                 "Brendan Haywood" => {
                   :number => 33,
@@ -110,7 +110,7 @@ def game_hash
                   :assists => 12,
                   :steals => 22,
                   :blocks => 5,
-                  :slam_dunks => 12,
+                  :slam_dunks => 12
                 }
               }
             }
@@ -118,16 +118,101 @@ def game_hash
 end
 
 def num_points_scored(player_name)
-  points_scored = 0
+
 
   game_hash.each do |team, value|
 
     value[:players].each do |player, attribute|
-    #   binding.pry
+      # binding.pry
       if player == player_name
-        points_scored = attribute[:points]
+      return attribute[:points]
+
       end
     end
   end
-  points_scored 
+end
+
+def shoe_size(player_name)
+  game_hash.each do |team, value|
+
+    value[:players].each do |player, attribute|
+      # binding.pry
+      if player == player_name
+      return attribute[:shoe]
+
+    end
+  end
+
+  def  team_colors(teamname)
+    game_hash.each do |location, value|
+#binding.pry
+        if value[:team_name] == teamname
+        return value[:colors]
+end
+end
+end
+end
+end
+
+
+def team_names
+
+  game_hash.collect do |location, value|
+    # binding.pry
+  value[:team_name]
+
+
+
+end
+end
+
+
+def player_numbers(teamname)
+array = []
+    game_hash.each do |location, value|
+
+if
+      value[:team_name] == teamname
+
+   value[:players].each do |player, attribute|
+#binding.pry
+array << attribute[:number]
+
+
+
+    end
+  end
+end
+array
+end
+
+def player_stats(player_name)
+  game_hash.each do |team, value|
+
+    value[:players].each do |player, attribute|
+      # binding.pry
+      if player == player_name
+      return attribute
+
+    end
+    end
+  end
+end
+
+def big_shoe_rebounds
+
+  game_hash.each do |team, value|
+
+
+     value[:players].each do |player, attribute|
+     #binding.pry
+      if attribute[:shoe] == 19
+
+      return attribute[:rebounds]
+
+
+
+  end
+end
+end
 end
