@@ -122,7 +122,7 @@ def shoe_size(name)
   result= []
   game_hash.each do |team_origin, team_attribute|
     
-    team_attribute.each do |players, name|
+    team_attribute.each do |players, p_name|
       
      if team_attribute[:players] == name
        binding.pry
@@ -147,3 +147,21 @@ def num_points_scored(name)
    result
 end  
  
+ def team_names
+    array = []
+    game_hash.each do |team_origin, team|
+        array << team[:team_name]
+    end
+    array
+end
+
+def team_colors(team_name)
+ result = []
+    game_hash.each do |team_origin, team_attribute|
+        if team_attribute[:team_name] == team_name
+            result << game_hash[team_origin][:colors]
+        end
+    end
+    result.flatten
+end
+
