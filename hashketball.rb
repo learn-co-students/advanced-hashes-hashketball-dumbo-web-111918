@@ -56,7 +56,7 @@ def game_hash
                               :blocks => 11,
                               :slam_dunks => 1
                              }               }
-            },
+                             },
             :away =>{
                     :team_name => "Charlotte Hornets",
                     :colors => ["Turquoise", "Purple"],
@@ -121,11 +121,12 @@ end
 def shoe_size(name)
   result= []
   game_hash.each do |team_origin, team_attribute|
-      binding.pry
+    
     team_attribute.each do |players, name|
+      
      if team_attribute[:players] == name
+       binding.pry
       result << team_attribute[:players][name][:shoe]
-      binding.pry
      end 
     end 
   end 
@@ -133,4 +134,16 @@ def shoe_size(name)
 end
 
 
+def num_points_scored(name)
+  
+   result= []
+  game_hash.each do |team_origin, team_attribute|
+    team_attribute.each do |players, name|
+     if team_attribute[:players] == name
+      result << team_attribute[:players][name][:points]
+     end 
+    end 
+  end 
+   result
+end  
  
