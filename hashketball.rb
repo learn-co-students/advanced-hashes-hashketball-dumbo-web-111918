@@ -122,7 +122,7 @@ def shoe_size(name)
   result= []
   game_hash.each do |team_origin, team_attribute|
       binding.pry
-    team_attribute.each do |players, name||
+    team_attribute.each do |players, name|
      if team_attribute[:players] == name
       result << team_attribute[:players][name][:shoe]
       binding.pry
