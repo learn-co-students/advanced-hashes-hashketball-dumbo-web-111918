@@ -116,14 +116,13 @@ def game_hash
   }
 end
 
-def num_points_scored(player)
-  result = ""
-  stats = game_hash
-  stats.each do |tm_loc, tm_data|
+def find_player(player)
+  result = {}
+  game_hash.each do |tm_loc, tm_data|
     tm_data.each do |tm_attr,tm_val|
       if tm_attr == :players
         if tm_val[player] != nil
-          result = tm_val[player][:points]
+          result = tm_val[player]
         end
       end
     end
@@ -131,25 +130,17 @@ def num_points_scored(player)
   result
 end
 
+def num_points_scored(player)
+  find_player(player)[:points]
+end
+
 def shoe_size(player)
-  result = ""
-  stats = game_hash
-  stats.each do |tm_loc, tm_data|
-    tm_data.each do |tm_attr,tm_val|
-      if tm_attr == :players
-        if tm_val[player] != nil
-          result = tm_val[player][:shoe]
-        end
-      end
-    end
-  end
-  result
+  find_player(player)[:shoe]
 end
 
 def team_colors(name)
   result = []
-  stats = game_hash
-  stats.each do |tm_loc, tm_data|
+  game_hash.each do |tm_loc, tm_data|
     if tm_data[:team_name] == name
         result = tm_data[:colors]
     end
@@ -210,3 +201,4 @@ def big_shoe_rebounds
   end
   rebounds
 end
+binding.pry
