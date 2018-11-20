@@ -119,12 +119,9 @@ end
 def find_player(player)
   result = {}
   game_hash.each do |tm_loc, tm_data|
-    tm_data.each do |tm_attr,tm_val|
-      if tm_attr == :players
-        if tm_val[player] != nil
-          result = tm_val[player]
-        end
-      end
+    tm_data[:players]
+    if tm_data[:players][player] != nil
+      result = tm_data[:players][player]
     end
   end
   result
@@ -189,16 +186,9 @@ def big_shoe_rebounds
     tm_data[:players].each do |name,plyr_data|
       if plyr_data[:shoe] > max
         max = plyr_data[:shoe]
-      end
-    end
-  end
-  stats.each do |tm_loc, tm_data|
-    tm_data[:players].each do |name,plyr_data|
-      if plyr_data[:shoe] == max
         rebounds = plyr_data[:rebounds]
       end
     end
   end
   rebounds
 end
-binding.pry
